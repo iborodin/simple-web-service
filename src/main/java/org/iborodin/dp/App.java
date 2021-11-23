@@ -1,13 +1,16 @@
 package org.iborodin.dp;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import org.iborodin.dp.endpoint.DateEndpoint;
+
+import javax.xml.ws.Endpoint;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        final DateEndpoint endpoint = new DateEndpoint();
+        final String url = "http://localhost:8080/DateEndpoint?wsdl";
+        Endpoint.publish(url, endpoint );
+        System.out.println(url);
     }
 }
