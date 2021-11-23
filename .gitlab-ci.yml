@@ -21,3 +21,11 @@ publish:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY  
     - docker build -t $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:latest
+
+publish on Docker Hub:
+  image: docker:19.03.0
+  stage: deploy
+  script:
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS  
+    - docker build -t $DOCKER_REGISTRY_USER/$CI_PROJECT_NAME:latest .
+    - docker push $DOCKER_REGISTRY_USER/$CI_PROJECT_NAME:latest
