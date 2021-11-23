@@ -26,6 +26,6 @@ publish on Docker Hub:
   image: docker:19.03.0
   stage: deploy
   script:
-    - echo "$DOCKER_REGISTRY_PASS" | docker login --username $DOCKER_REGISTRY_USER --password-stdin
+    - docker login --u $DOCKER_REGISTRY_USER -p "$DOCKER_REGISTRY_PASS" --password-stdin
     - docker build -t $DOCKER_REGISTRY_USER/$CI_PROJECT_NAME:latest .
     - docker push $DOCKER_REGISTRY_USER/$CI_PROJECT_NAME:latest
