@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  
+  simple-web-service:
+    image: registry.gitlab.com/iborodin1/simple-web-service:latest
+    ports:
+      - 8080:8080
